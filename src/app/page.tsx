@@ -90,7 +90,7 @@ An evening to awaken memories, cross cultures, and let poetry speak in all its f
               }}
               title='Live Poetry Readings'
               description={
-                <p>
+                <span>
                   Let poets guide you into their worlds — one verse at a time. Each poem is a door;
                   each voice, a key. Some will read the words of beloved authors, others will bare
                   their own souls. Languages may vary — Portuguese, Ukrainian, or Brazilian
@@ -98,7 +98,7 @@ An evening to awaken memories, cross cultures, and let poetry speak in all its f
                   with passion, every poem becomes a bridge: between people, cultures, and quiet
                   corners of the self. Come to listen. Come to feel. And if your heart compels you —
                   come to speak.
-                </p>
+                </span>
               }
             />
           </div>
