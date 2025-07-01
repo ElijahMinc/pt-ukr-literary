@@ -8,7 +8,7 @@ export const Header = () => {
       <div className='container'>
         <nav className={styles.nav}>
           <div className={styles.logo}>
-            <Image width={85} height={85} src='/logo.png' alt='logo' />
+            <Image width={75} height={60} src='/logo.png' alt='logo' />
 
             <h4>Multicultural Poetry Night</h4>
           </div>

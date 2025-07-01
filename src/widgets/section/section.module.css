@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.content__block {
+}
