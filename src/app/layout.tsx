@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Archivo, Inter } from 'next/font/google';
-import './globals.css';
 import { Header } from '@/widgets/header/header.ui';
+
+import './globals.scss';
 
 const archivoSans = Archivo({
   subsets: ['latin'],

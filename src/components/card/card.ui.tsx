@@ -1,4 +1,4 @@
-import styles from './card.module.css';
+import './card.scss';
 import cn from 'classnames';
 
 interface ICardProps
@@ -11,9 +11,9 @@ interface ICardProps
 
 export const Card = ({ title, description, className, ...rest }: ICardProps) => {
   return (
-    <div className={cn(styles.card, className)} {...rest}>
-      {title && <h3 className={styles.card__title}>{title}</h3>}
-      {description && <p className={styles.card__description}>{description}</p>}
+    <div className={cn('card', className)} {...rest}>
+      {title && <h3 className='card__title'>{title}</h3>}
+      {description && <p className='card__description'>{description}</p>}
     </div>
   );
 };

@@ -1,0 +1,24 @@
+.card {
+  padding: 23px 20px;
+  border-radius: 10px;
+
+  background-color: #212121ff;
+
+  &__title {
+    color: var(--primary-white-color);
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 700;
+
+    margin-bottom: 24px;
+  }
+
+  &__description {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #a0a0a0ff;
+
+    /* margin-bottom: 29px; */
+  }
+}

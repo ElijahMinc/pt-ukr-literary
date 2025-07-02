@@ -1,12 +1,14 @@
 import { Card } from '@/components/card/card.ui';
-import styles from './page.module.css';
 import { Section } from '@/widgets/section/section.ui';
 import Image from 'next/image';
 
+import './page.scss';
+
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className='page'>
       <Section
+        className='section-first'
         Content={
           <div
             style={{
@@ -23,15 +25,7 @@ export default function Home() {
 Let yourself be carried away by verses whispered in Portuguese, Ukrainian, and Brazilian voices.
 An evening to awaken memories, cross cultures, and let poetry speak in all its forms.'
             />
-            <div
-              style={{
-                display: 'flex',
-                gap: '10px',
-                marginTop: '10px',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
+            <div className='step-into-content'>
               <Image
                 width={350}
                 height={101}
@@ -77,6 +71,7 @@ An evening to awaken memories, cross cultures, and let poetry speak in all its f
         style={{
           marginTop: '20px',
         }}
+        className='section-second'
         Content={
           <div
             style={{
@@ -87,18 +82,45 @@ An evening to awaken memories, cross cultures, and let poetry speak in all its f
             <Card
               style={{
                 maxWidth: '750px',
+                // width: '750px',
               }}
               title='Live Poetry Readings'
               description={
-                <span>
-                  Let poets guide you into their worlds — one verse at a time. Each poem is a door;
-                  each voice, a key. Some will read the words of beloved authors, others will bare
-                  their own souls. Languages may vary — Portuguese, Ukrainian, or Brazilian
-                  Portuguese — but the emotion is universal. Whether whispered softly or declared
-                  with passion, every poem becomes a bridge: between people, cultures, and quiet
-                  corners of the self. Come to listen. Come to feel. And if your heart compels you —
-                  come to speak.
-                </span>
+                <>
+                  <span
+                    style={{
+                      display: 'block',
+                      maxWidth: '550px',
+                    }}
+                  >
+                    Let poets guide you into their worlds — one verse at a time. Each poem is a
+                    door; each voice, a key. Some will read the words of beloved authors, others
+                    will bare their own souls.
+                  </span>
+                  <br />
+
+                  <span
+                    style={{
+                      display: 'block',
+                      maxWidth: '550px',
+                    }}
+                  >
+                    Languages may vary — Portuguese, Ukrainian, or Brazilian Portuguese — but the
+                    emotion is universal.
+                  </span>
+                  <br />
+
+                  <span
+                    style={{
+                      display: 'block',
+                      maxWidth: '450px',
+                    }}
+                  >
+                    Whether whispered softly or declared with passion, every poem becomes a bridge:
+                    between people, cultures, and quiet corners of the self. Come to listen. Come to
+                    feel.
+                  </span>
+                </>
               }
             />
           </div>

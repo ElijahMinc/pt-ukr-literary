@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './section.module.css';
+import './section.scss';
 import cn from 'classnames';
 
 interface ISectionProps
@@ -9,6 +8,7 @@ interface ISectionProps
 
   title?: string;
   reverseContent?: boolean;
+  contentAttr?: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 }
 
 export const Section: React.FC<ISectionProps> = ({
@@ -17,18 +17,20 @@ export const Section: React.FC<ISectionProps> = ({
   Content,
   reverseContent,
   className,
+  contentAttr,
   ...rest
 }) => {
   return (
-    <section className={cn(styles.section, className)} {...rest}>
-      {title && <h2 className={styles.section__title}>{title}</h2>}
+    <section className={cn('section', className)} {...rest}>
+      {title && <h2 className='section__title'>{title}</h2>}
       <div
-        className={cn(styles.content, {
-          [styles.reversed]: reverseContent,
+        className={cn('content', contentAttr?.className, {
+          reversed: reverseContent,
         })}
+        {...contentAttr}
       >
-        <div className={styles.content__block}>{Image}</div>
-        <div className={styles.content__block}>{Content}</div>
+        <div className='content__block'>{Image}</div>
+        <div className='content__block'>{Content}</div>
       </div>
     </section>
   );
