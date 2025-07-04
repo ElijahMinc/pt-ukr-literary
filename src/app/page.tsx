@@ -1,4 +1,4 @@
-import { MainPage } from '@/pages/main.ui';
+import MainPage from '@/pages/main.ui';
 import './page.scss';
 
 export default function Page() {

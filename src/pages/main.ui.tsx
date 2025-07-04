@@ -2,7 +2,7 @@ import { AboutWidget } from '@/widgets/about/about.ui';
 import { FooterWidget } from '@/widgets/footer/footer.ui';
 import { HomeWidget } from '@/widgets/home/home.ui';
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <main>
       <HomeWidget />
@@ -11,3 +11,5 @@ export const MainPage = () => {
     </main>
   );
 };
+
+export default MainPage;
