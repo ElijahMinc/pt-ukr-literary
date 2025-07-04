@@ -1,0 +1,63 @@
+.section-about {
+  padding-top: 70px;
+
+  &__title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #ffffffff;
+
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    @media screen and (max-width: 920px) {
+      flex-direction: column;
+      padding: 50px;
+      position: relative;
+    }
+
+    &-img {
+      flex: 1 0 50%;
+      position: relative;
+
+      width: 507px;
+      height: 300px;
+      border-radius: 4px;
+      overflow: hidden;
+
+      @media screen and (max-width: 920px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-card {
+      flex: 1 1 50%;
+
+      @media screen and (max-width: 920px) {
+        width: 90%;
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+
+  &__sub-content {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 40px;
+    font-weight: 700;
+    max-width: 1100px;
+    margin: 30px auto 0 auto;
+  }
+}

@@ -2,7 +2,13 @@
   padding: 23px 20px;
   border-radius: 10px;
 
-  background-color: #212121ff;
+  &.primary {
+    background-color: #1a1a1aff;
+  }
+
+  &.secondary {
+    background-color: #2a2a2aff;
+  }
 
   &__title {
     color: var(--primary-white-color);
@@ -18,7 +24,5 @@
     line-height: 18px;
     font-weight: 400;
     color: #a0a0a0ff;
-
-    /* margin-bottom: 29px; */
   }
 }

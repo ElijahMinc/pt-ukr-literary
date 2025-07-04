@@ -13,12 +13,12 @@ export const Header = () => {
   const closeMenu = () => setMenuOpen(false);
 
   const links = [
+    { url: '#home', label: 'Home' },
     { url: '#about', label: 'About' },
-    { url: '#experiences', label: 'Experiences' },
-    { url: '#reserve', label: 'Reserve' },
-    { url: '#reviews', label: 'Reviews' },
+    { url: '#Join us', label: 'Join us' },
+    { url: '#artists', label: 'Artists' },
     { url: '#gallery', label: 'Gallery' },
-    { url: '#contact', label: 'Contact' },
+    { url: '#contacts', label: 'Contacts' },
   ];
 
   return (
