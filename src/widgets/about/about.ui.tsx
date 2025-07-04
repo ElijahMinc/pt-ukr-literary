@@ -5,7 +5,7 @@ import './about.scss';
 export const AboutWidget = () => {
   return (
     <section className='section-about' id='about'>
-      <h1 className='section-about__title'>About</h1>
+      <h3 className='section-about__title'>About</h3>
 
       <div className='section-about__content'>
         <div className='section-about__content-img'>
