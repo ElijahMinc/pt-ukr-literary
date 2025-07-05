@@ -20,6 +20,10 @@
       position: relative;
     }
 
+    @media screen and (max-width: 620px) {
+      padding: 10px;
+    }
+
     &-img {
       flex: 1 0 33.3%;
       position: relative;
@@ -51,6 +55,8 @@
     &-map {
       flex: 1 0 33.3%;
       position: relative;
+      border-radius: 10px;
+      overflow: hidden;
 
       @media screen and (max-width: 920px) {
         flex: 0 0 400px;

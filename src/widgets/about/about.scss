@@ -18,8 +18,13 @@
 
     @media screen and (max-width: 920px) {
       flex-direction: column;
-      padding: 50px;
+      padding: 30px 15px;
+
       position: relative;
+    }
+
+    @media screen and (max-width: 620px) {
+      padding: 10px;
     }
 
     &-img {
@@ -44,9 +49,13 @@
       flex: 1 1 50%;
 
       @media screen and (max-width: 920px) {
-        width: 90%;
+        width: 80%;
         position: relative;
         z-index: 2;
+      }
+
+      @media screen and (max-width: 620px) {
+        width: 100%;
       }
     }
   }

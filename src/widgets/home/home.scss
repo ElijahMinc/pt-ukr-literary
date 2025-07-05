@@ -17,6 +17,12 @@
     @media screen and (max-width: 920px) {
       flex-direction: column;
       position: relative;
+
+      padding: 30px 15px;
+    }
+
+    @media screen and (max-width: 620px) {
+      padding: 10px;
     }
 
     &__item {
