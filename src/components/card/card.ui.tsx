@@ -27,7 +27,7 @@ export const Card = ({
       {...rest}
     >
       {title && <h3 className='card__title'>{title}</h3>}
-      {description && <p className='card__description'>{description}</p>}
+      {description && <div className='card__description'>{description}</div>}
       {children && children}
     </div>
   );

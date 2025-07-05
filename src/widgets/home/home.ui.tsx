@@ -1,28 +1,49 @@
 import { Card } from '@/components/card/card.ui';
 import Image from 'next/image';
 import './home.scss';
+import { IHomeFields } from '@/types/contentful';
+import { getDocumentToHtmlString } from '@/helpers/getDocumentToHtmlString';
 
-export const HomeWidget = () => {
+interface IHomeWidgetProps {
+  homeData: IHomeFields;
+}
+
+export const HomeWidget = ({ homeData }: IHomeWidgetProps) => {
+  console.log('homeData', homeData);
+
+  const title = homeData?.title;
+  const description = homeData?.description ? getDocumentToHtmlString(homeData?.description) : '';
+  const subTitle = homeData?.subTitle;
+
+  const image = homeData?.mainImage;
+
   return (
     <section className='section-home'>
       <div className='section-main'>
         <div className='section-main__item'>
           <div className='section-main__image section-main__image-first'>
-            <Image src='/home-first-img.png' objectFit='cover' fill alt='main-picture' />
+            <Image
+              src={`https:${image?.fields?.file?.url as string}`}
+              objectFit='cover'
+              fill
+              alt={(image?.fields?.title as string) || ''}
+            />
           </div>
         </div>
         <div className='section-main__item'>
           <Card
             appearance='secondary'
-            title='Where Poems Find Their Voice — And You Find Yours'
+            title={title}
             description={
-              <span>
-                A single night where voices from distant places blend into one gentle current of
-                verse, where each word carries a memory, each silence holds a heartbeat, and poetry
-                becomes the soft thread that ties us together across languages, across lives, in a
-                moment that exists only once and entirely through feeling. Come be part of something
-                that only lives once: <strong>a night made entirely of poetry.</strong>
-              </span>
+              description && <div dangerouslySetInnerHTML={{ __html: description }} />
+
+              // <span>
+              //   A single night where voices from distant places blend into one gentle current of
+              //   verse, where each word carries a memory, each silence holds a heartbeat, and poetry
+              //   becomes the soft thread that ties us together across languages, across lives, in a
+              //   moment that exists only once and entirely through feeling. Come be part of something
+              //   that only lives once: <strong>a night made entirely of poetry.</strong>
+              // </span>
             }
           />
 
@@ -34,7 +55,7 @@ export const HomeWidget = () => {
             {/* <Card className='section-main__image section-main__image-second'>
               <Image src='/home-second-img.png' objectFit='cover' fill alt='main-picture' />
             </Card> */}
-            <Card appearance='secondary' title='One night, endless verses.' />
+            <Card appearance='secondary' title={subTitle} />
           </div>
         </div>
       </div>
