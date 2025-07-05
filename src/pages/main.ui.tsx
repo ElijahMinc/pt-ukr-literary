@@ -6,6 +6,8 @@ import { EntrySkeletonType } from 'contentful';
 import { IHomeFields } from '@/types/contentful';
 import client from '@/services/contentful';
 
+export const revalidate = 60;
+
 const MainPage = async () => {
   const homeSectionData = await client.getEntries<EntrySkeletonType<IHomeFields>>({
     content_type: 'home',
