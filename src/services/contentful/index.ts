@@ -1,4 +1,3 @@
-import '../envConfig.ts';
 import { createClient } from 'contentful';
 
 const { CONTENTFUL_ACCESS_TOKEN, CONTENTFUL_SPACE } = process.env;

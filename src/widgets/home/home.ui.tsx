@@ -1,16 +1,14 @@
 import { Card } from '@/components/card/card.ui';
 import Image from 'next/image';
-import './home.scss';
 import { IHomeFields } from '@/types/contentful';
 import { getDocumentToHtmlString } from '@/helpers/getDocumentToHtmlString';
+import './home.scss';
 
 interface IHomeWidgetProps {
   homeData: IHomeFields;
 }
 
 export const HomeWidget = ({ homeData }: IHomeWidgetProps) => {
-  console.log('homeData', homeData);
-
   const title = homeData?.title;
   const description = homeData?.description ? getDocumentToHtmlString(homeData?.description) : '';
   const subTitle = homeData?.subTitle;
