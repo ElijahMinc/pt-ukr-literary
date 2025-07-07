@@ -1,0 +1,26 @@
+.section-gallery {
+  padding-top: 70px;
+
+  &__title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #ffffffff;
+
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    display: grid;
+    gap: 32px;
+    justify-content: center;
+
+    // Автоматическое размещение колонок с минимальной шириной 250px
+    grid-template-columns: repeat(auto-fit, minmax(568px, 1fr));
+    grid-auto-rows: 284px;
+
+    // Можно задать max-width, если нужно ограничить ширину контейнера
+  }
+}
