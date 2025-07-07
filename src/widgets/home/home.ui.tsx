@@ -3,29 +3,34 @@ import Image from 'next/image';
 import { IHomeFields } from '@/types/contentful';
 import { getDocumentToHtmlString } from '@/helpers/getDocumentToHtmlString';
 import './home.scss';
+import client from '@/services/contentful';
+import { EntrySkeletonType } from 'contentful';
+import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
 
-interface IHomeWidgetProps {
-  homeData: IHomeFields;
-}
+export const HomeWidget = async () => {
+  const homeSectionData = await client.getEntries<EntrySkeletonType<IHomeFields>>({
+    content_type: 'home',
+    limit: 1,
+  });
 
-export const HomeWidget = ({ homeData }: IHomeWidgetProps) => {
+  const [homeSection] = homeSectionData.items;
+
+  const homeData = homeSection?.fields;
   const title = homeData?.title;
   const description = homeData?.description ? getDocumentToHtmlString(homeData?.description) : '';
   const subTitle = homeData?.subTitle;
 
   const image = homeData?.mainImage;
 
+  const imageUrl = getContentfulImageData(image, { image: true });
+  const imageTitle = getContentfulImageData(image, { title: true });
+
   return (
     <section className='section-home'>
       <div className='section-main'>
         <div className='section-main__item'>
           <div className='section-main__image section-main__image-first'>
-            <Image
-              src={`https:${image?.fields?.file?.url as string}`}
-              objectFit='cover'
-              fill
-              alt={(image?.fields?.title as string) || ''}
-            />
+            <Image src={`https:${imageUrl}`} objectFit='cover' fill alt={imageTitle || ''} />
           </div>
         </div>
         <div className='section-main__item'>

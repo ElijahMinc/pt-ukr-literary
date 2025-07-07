@@ -1,0 +1,21 @@
+.section-artists {
+  padding-top: 70px;
+
+  &__title {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #ffffffff;
+
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
+
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

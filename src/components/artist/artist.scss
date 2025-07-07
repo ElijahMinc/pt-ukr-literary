@@ -1,0 +1,29 @@
+.artist-card {
+  background: #1a1a1aff;
+  border-radius: 12px;
+  width: 202px;
+  height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: 128px;
+    height: 128px;
+    overflow: hidden;
+    border-radius: 100%;
+
+    position: relative;
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    color: #ffffffff;
+
+    margin-top: 20px;
+  }
+}
