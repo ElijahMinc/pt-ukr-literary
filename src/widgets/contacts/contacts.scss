@@ -1,5 +1,6 @@
 .section-contacts {
   padding-top: 70px;
+
   &__title {
     font-size: 36px;
     line-height: 40px;
@@ -23,6 +24,19 @@
 
     @media screen and (max-width: 620px) {
       padding: 10px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
     }
 
     &-img {
