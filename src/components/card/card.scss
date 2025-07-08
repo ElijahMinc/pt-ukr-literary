@@ -10,7 +10,8 @@
     background-color: #2a2a2aff;
   }
 
-  &__title {
+  &__title,
+  h3 {
     color: var(--primary-white-color);
     font-size: 20px;
     line-height: 30px;
@@ -19,7 +20,8 @@
     margin-bottom: 24px;
   }
 
-  &__description {
+  &__description,
+  p {
     font-size: 12px;
     line-height: 18px;
     font-weight: 400;

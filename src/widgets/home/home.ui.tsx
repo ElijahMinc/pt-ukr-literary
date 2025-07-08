@@ -25,6 +25,17 @@ export const HomeWidget = async () => {
   const imageUrl = getContentfulImageData(image, { image: true });
   const imageTitle = getContentfulImageData(image, { title: true });
 
+  const externalTextOne = homeData.externalTextOne;
+  const externalTextTwo = homeData.externalTextTwo;
+
+  const leftCentralBlock = homeData?.leftCentralBlock
+    ? getDocumentToHtmlString(homeData?.leftCentralBlock)
+    : '';
+
+  const rightCentralBlock = homeData?.rightCentralBlock
+    ? getDocumentToHtmlString(homeData?.leftCentralBlock)
+    : '';
+
   return (
     <section className='section-home'>
       <div className='section-main'>
@@ -37,17 +48,7 @@ export const HomeWidget = async () => {
           <Card
             appearance='secondary'
             title={title}
-            description={
-              description && <div dangerouslySetInnerHTML={{ __html: description }} />
-
-              // <span>
-              //   A single night where voices from distant places blend into one gentle current of
-              //   verse, where each word carries a memory, each silence holds a heartbeat, and poetry
-              //   becomes the soft thread that ties us together across languages, across lives, in a
-              //   moment that exists only once and entirely through feeling. Come be part of something
-              //   that only lives once: <strong>a night made entirely of poetry.</strong>
-              // </span>
-            }
+            description={description && <div dangerouslySetInnerHTML={{ __html: description }} />}
           />
 
           <div
@@ -65,46 +66,43 @@ export const HomeWidget = async () => {
 
       <div className='sub-content'>
         <div className='sub-content__wrapper'>
-          <p
-            className='sub-content__text'
-            style={{
-              maxWidth: '768px',
-              margin: '0 auto 40px auto',
-            }}
-          >
-            POETRY GATHERING — a space where language becomes light, where diverse voices and poetic
-            forms converge beyond borders. This event is a tribute to the power of words as bridges
-            — between cultures, between strangers, between the unsaid and the deeply felt. Our
-            vision was to create a living moment of shared presence, where poetry isn’t confined to
-            the page, but breathes between people.
-          </p>
+          {externalTextOne && (
+            <p
+              className='sub-content__text'
+              style={{
+                maxWidth: '768px',
+                margin: '0 auto 40px auto',
+              }}
+            >
+              {externalTextOne}
+            </p>
+          )}
 
           <div className='sub-content__cards'>
-            <Card
-              title='What to Expect'
-              description='A warm, intimate atmosphere where poems flow freely — from the classics to the untamed words of our own. Let your spirit wander, seated among verses in Portuguese, Ukrainian, and Brazilian voices.'
-            />
+            {leftCentralBlock && (
+              <Card>
+                <div dangerouslySetInnerHTML={{ __html: leftCentralBlock }} />
+              </Card>
+            )}
 
-            <Card
-              title='Why Poetry?'
-              description='Because poetry holds what cannot be held.
-Because the world needs beauty, now more than ever.
-Because each of us has something to say — and someone who needs to hear it.'
-            />
+            {rightCentralBlock && (
+              <Card>
+                <div dangerouslySetInnerHTML={{ __html: rightCentralBlock }} />
+              </Card>
+            )}
           </div>
 
-          <p
-            className='sub-content__text'
-            style={{
-              maxWidth: '768px',
-              margin: '40px auto 40px auto',
-            }}
-          >
-            This gathering was born from the desire to share presence through poetry, to let words
-            cross borders and linger in the air like music, uniting those who arrive with different
-            stories but the same quiet longing to listen, to speak, to be moved together in one
-            fleeting, beautiful evening.
-          </p>
+          {externalTextTwo && (
+            <p
+              className='sub-content__text'
+              style={{
+                maxWidth: '768px',
+                margin: '40px auto 40px auto',
+              }}
+            >
+              {externalTextTwo}
+            </p>
+          )}
 
           <div className='sub-content__celebration'>
             <Card
