@@ -31,5 +31,9 @@
     line-height: 18px;
     font-weight: 400;
     color: #a0a0a0ff;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
   }
 }

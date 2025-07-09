@@ -3,6 +3,89 @@
 import { Asset, Entry } from 'contentful';
 import { Document } from '@contentful/rich-text-types';
 
+export interface IAboutUsFields {
+  /** Title */
+  title: string;
+
+  /** Main Image */
+  mainImage: Asset;
+
+  /** Description title */
+  descriptionTitle: string;
+
+  /** Description */
+  description: Document;
+
+  /** External Text */
+  externalText: string;
+}
+
+/** In the middle of the page */
+
+export interface IAboutUs extends Entry<IAboutUsFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'aboutUs';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface IArtistsFields {
+  /** Title */
+  artists: string;
+
+  /** Artists Photos */
+  artistsPhotos: Asset[];
+}
+
+export interface IArtists extends Entry<IArtistsFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'artists';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export interface IBottomFields {
+  /** Title */
+  title: string;
+}
+
+export interface IBottom extends Entry<IBottomFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'bottom';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IContactsFields {
   /** Image */
   image: Asset;
@@ -36,6 +119,31 @@ export interface IContacts extends Entry<IContactsFields> {
   };
 }
 
+export interface IGalleryFields {
+  /** Title */
+  Title: string;
+
+  /** Gallery */
+  gallery: Asset[];
+}
+
+export interface IGallery extends Entry<IGalleryFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'gallery';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IHomeFields {
   /** Title */
   title: string;
@@ -52,14 +160,29 @@ export interface IHomeFields {
   /** External Text One */
   externalTextOne: string;
 
+  /** Left Central Block Title */
+  leftCentralBlockTitle?: string | undefined;
+
   /** Left Central Block */
   leftCentralBlock: Document;
+
+  /** Right Central Block Title */
+  rightCentralBlockTitle: string;
 
   /** Right Central Block */
   rightCentralBlock: Document;
 
   /** External Text Two */
   externalTextTwo: string;
+
+  /** Second description title */
+  secondDescriptionTitle: string;
+
+  /** Second description */
+  secondDescription: Document;
+
+  /** Second Image */
+  secondImage: Asset;
 }
 
 /** Home section */
@@ -81,9 +204,9 @@ export interface IHome extends Entry<IHomeFields> {
   };
 }
 
-export type CONTENT_TYPE = 'contacts' | 'home';
+export type CONTENT_TYPE = 'aboutUs' | 'artists' | 'bottom' | 'contacts' | 'gallery' | 'home';
 
-export type IEntry = IContacts | IHome;
+export type IEntry = IAboutUs | IArtists | IBottom | IContacts | IGallery | IHome;
 
 export type LOCALE_CODE = 'en-US';
 

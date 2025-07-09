@@ -1,11 +1,13 @@
 import { Card } from '@/components/card/card.ui';
 import Image from 'next/image';
 import { IHomeFields } from '@/types/contentful';
-import { getDocumentToHtmlString } from '@/helpers/getDocumentToHtmlString';
-import './home.scss';
 import client from '@/services/contentful';
 import { EntrySkeletonType } from 'contentful';
 import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
+
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
+import './home.scss';
 
 export const HomeWidget = async () => {
   const homeSectionData = await client.getEntries<EntrySkeletonType<IHomeFields>>({
@@ -17,7 +19,7 @@ export const HomeWidget = async () => {
 
   const homeData = homeSection?.fields;
   const title = homeData?.title;
-  const description = homeData?.description ? getDocumentToHtmlString(homeData?.description) : '';
+  const Description = homeData?.description ? documentToReactComponents(homeData?.description) : '';
   const subTitle = homeData?.subTitle;
 
   const image = homeData?.mainImage;
@@ -28,13 +30,39 @@ export const HomeWidget = async () => {
   const externalTextOne = homeData.externalTextOne;
   const externalTextTwo = homeData.externalTextTwo;
 
-  const leftCentralBlock = homeData?.leftCentralBlock
-    ? getDocumentToHtmlString(homeData?.leftCentralBlock)
+  const leftCentralBlockTitle = homeData?.leftCentralBlockTitle
+    ? homeData?.leftCentralBlockTitle
     : '';
 
-  const rightCentralBlock = homeData?.rightCentralBlock
-    ? getDocumentToHtmlString(homeData?.leftCentralBlock)
+  const LeftCentralBlock = homeData?.leftCentralBlock
+    ? documentToReactComponents(homeData?.leftCentralBlock)
     : '';
+
+  const rightCentralBlockTitle = homeData?.rightCentralBlockTitle
+    ? homeData?.rightCentralBlockTitle
+    : '';
+
+  const RightCentralBlock = homeData?.rightCentralBlock
+    ? documentToReactComponents(homeData?.rightCentralBlock)
+    : '';
+
+  const secondDescriptionTitle = homeData?.secondDescriptionTitle
+    ? homeData?.secondDescriptionTitle
+    : '';
+
+  const SecondDescription = homeData?.secondDescription
+    ? documentToReactComponents(homeData?.secondDescription)
+    : '';
+
+  const secondDescriptionImage = homeData?.secondImage;
+
+  const secondDescriptionImageUrl = getContentfulImageData(secondDescriptionImage, { image: true });
+
+  const secondDescriptionImageTitle = getContentfulImageData(secondDescriptionImage, {
+    title: true,
+  });
+
+  console.log('homeData?.description ', homeData?.description);
 
   return (
     <section className='section-home'>
@@ -45,11 +73,7 @@ export const HomeWidget = async () => {
           </div>
         </div>
         <div className='section-main__item'>
-          <Card
-            appearance='secondary'
-            title={title}
-            description={description && <div dangerouslySetInnerHTML={{ __html: description }} />}
-          />
+          <Card appearance='secondary' title={title} description={Description} />
 
           <div
             style={{
@@ -79,17 +103,9 @@ export const HomeWidget = async () => {
           )}
 
           <div className='sub-content__cards'>
-            {leftCentralBlock && (
-              <Card>
-                <div dangerouslySetInnerHTML={{ __html: leftCentralBlock }} />
-              </Card>
-            )}
+            {LeftCentralBlock && <Card title={leftCentralBlockTitle}>{LeftCentralBlock}</Card>}
 
-            {rightCentralBlock && (
-              <Card>
-                <div dangerouslySetInnerHTML={{ __html: rightCentralBlock }} />
-              </Card>
-            )}
+            {RightCentralBlock && <Card title={rightCentralBlockTitle}>{RightCentralBlock}</Card>}
           </div>
 
           {externalTextTwo && (
@@ -104,37 +120,24 @@ export const HomeWidget = async () => {
             </p>
           )}
 
-          <div className='sub-content__celebration'>
-            <Card
-              className='sub-content__celebration-card'
-              title='Celebrate Through Language'
-              description={
-                <>
-                  <span
-                    style={{
-                      display: 'block',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    From the tenderness of lullabies to the fierceness of protest — witness the many
-                    lives a poem can live.
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                    }}
-                  >
-                    No stage, no pressure. Just voices, hearts, and presence. Bring your listening
-                    soul — or a poem of your own.
-                  </span>
-                </>
-              }
-            />
+          {SecondDescription && (
+            <div className='sub-content__celebration'>
+              <Card
+                className='sub-content__celebration-card'
+                title={secondDescriptionTitle}
+                description={SecondDescription}
+              />
 
-            <div className='sub-content__celebration-img'>
-              <Image src='/home-third-img.png' objectFit='cover' fill alt='celebration' />
+              <div className='sub-content__celebration-img'>
+                <Image
+                  src={`https:${secondDescriptionImageUrl}`}
+                  objectFit='cover'
+                  fill
+                  alt={secondDescriptionImageTitle || ''}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
