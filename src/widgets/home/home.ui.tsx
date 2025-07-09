@@ -62,8 +62,6 @@ export const HomeWidget = async () => {
     title: true,
   });
 
-  console.log('homeData?.description ', homeData?.description);
-
   return (
     <section className='section-home'>
       <div className='section-main'>
