@@ -32,14 +32,21 @@
       }
     }
 
-    &-title {
+    &-title,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-size: 18px;
       line-height: 28px;
       font-weight: 700;
       margin-bottom: 10px;
     }
 
-    &-text {
+    &-text,
+    p {
       font-size: 14px;
       line-height: 20px;
       font-weight: 400;

@@ -5,7 +5,12 @@ import './header.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export const Header = () => {
+interface IHeaderProps {
+  logoImage: string;
+  logoDescription: string;
+}
+
+export const Header = ({ logoImage, logoDescription }: IHeaderProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
@@ -26,8 +31,8 @@ export const Header = () => {
       <div className='container'>
         <nav className='nav'>
           <div className='logo'>
-            <Image width={75} height={60} src='/logo.png' alt='logo' />
-            <h4>Multicultural Poetry Night</h4>
+            <Image width={75} height={60} src={`https:${logoImage}`} alt='logo' />
+            <h4>{logoDescription}</h4>
           </div>
 
           <div className={`burger ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>

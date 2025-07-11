@@ -64,28 +64,6 @@ export interface IArtists extends Entry<IArtistsFields> {
   };
 }
 
-export interface IBottomFields {
-  /** Title */
-  title: string;
-}
-
-export interface IBottom extends Entry<IBottomFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'bottom';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
 export interface IContactsFields {
   /** Image */
   image: Asset;
@@ -204,9 +182,36 @@ export interface IHome extends Entry<IHomeFields> {
   };
 }
 
-export type CONTENT_TYPE = 'aboutUs' | 'artists' | 'bottom' | 'contacts' | 'gallery' | 'home';
+export interface ILogoFields {
+  /** Title */
+  title: string;
 
-export type IEntry = IAboutUs | IArtists | IBottom | IContacts | IGallery | IHome;
+  /** Logo */
+  logo: Asset;
+}
+
+/** Logo content */
+
+export interface ILogo extends Entry<ILogoFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'logo';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE = 'aboutUs' | 'artists' | 'contacts' | 'gallery' | 'home' | 'logo';
+
+export type IEntry = IAboutUs | IArtists | IContacts | IGallery | IHome | ILogo;
 
 export type LOCALE_CODE = 'en-US';
 
