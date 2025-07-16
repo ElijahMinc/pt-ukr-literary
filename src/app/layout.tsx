@@ -49,8 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
       images: seoConfiguration.previewImage
         ? [
             {
-              url: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
-              secureUrl: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              url: `https:${seoConfiguration.previewImage}`,
+              secureUrl: `https:${seoConfiguration.previewImage}`,
               width: 256,
               height: 256,
               alt: 'preview Image',
@@ -68,8 +68,8 @@ export async function generateMetadata(): Promise<Metadata> {
       images: seoConfiguration.previewImage
         ? [
             {
-              url: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
-              secureUrl: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              url: `https:${seoConfiguration.previewImage}`,
+              secureUrl: `https:${seoConfiguration.previewImage}`,
               width: 256,
               height: 256,
               alt: 'preview Image',
