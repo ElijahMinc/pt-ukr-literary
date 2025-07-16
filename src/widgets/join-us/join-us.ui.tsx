@@ -5,11 +5,13 @@ import { Button } from '@/ui/button/button.ui';
 import { Controller, useForm } from 'react-hook-form';
 
 import { PhoneInput } from '@/ui/phone-input/phone-input.ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CountryCode, parsePhoneNumber } from 'libphonenumber-js/min';
 
 import './join-us.scss';
 import { Spinner } from '@/ui/spinner/spinner.ui';
+import ReactConfetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 
 interface ISheetForm {
   name: string;
@@ -20,6 +22,9 @@ interface ISheetForm {
 }
 
 export const JoinUsWidget = () => {
+  const [isClient, setIsClient] = useState(false);
+  const { width, height } = useWindowSize();
+
   const {
     register,
     control,
@@ -29,8 +34,10 @@ export const JoinUsWidget = () => {
   } = useForm<ISheetForm>();
 
   const [countryCode, setCountryCode] = useState<CountryCode>('PT');
+  const [isSended, setSended] = useState(false);
 
   const onSubmit = async (data: ISheetForm) => {
+    setSended(false);
     try {
       const res = await fetch('/api/google-sheets', {
         method: 'POST',
@@ -45,7 +52,10 @@ export const JoinUsWidget = () => {
 
       if (result.data) {
         reset();
-        alert('Message sent!');
+        setSended(true);
+        setTimeout(() => {
+          setSended(false);
+        }, 8000);
       } else {
         alert('Error sending message');
       }
@@ -54,6 +64,10 @@ export const JoinUsWidget = () => {
       alert('Network error');
     }
   };
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <section id='join-us' className='section-join-us'>
@@ -141,6 +155,16 @@ export const JoinUsWidget = () => {
           {isSubmitting ? null : 'Apply'}
         </Button>
       </form>
+      {isClient && (
+        <ReactConfetti
+          width={width}
+          height={height}
+          numberOfPieces={100}
+          tweenDuration={2000}
+          run={isSended}
+          className={`confetti ${isSended ? 'sended' : ''}`}
+        />
+      )}
     </section>
   );
 };

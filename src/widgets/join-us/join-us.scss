@@ -1,5 +1,7 @@
 .section-join-us {
   padding-top: 70px;
+  position: relative;
+  overflow: hidden;
 
   &__title {
     font-size: 36px;
@@ -58,6 +60,14 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+  }
+
+  .confetti {
+    opacity: 0;
+    transition: 0.3s;
+    &.sended {
+      opacity: 1;
     }
   }
 }
