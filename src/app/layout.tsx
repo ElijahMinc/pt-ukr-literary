@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
               width: 256,
               height: 256,
               alt: 'bot-256',
-              type: 'image/jpng',
+              type: 'image/jpg',
             },
           ]
         : [],
@@ -73,7 +73,7 @@ export async function generateMetadata(): Promise<Metadata> {
               width: 256,
               height: 256,
               alt: 'bot-256',
-              type: 'image/jpng',
+              type: 'image/jpg',
             },
           ]
         : [],
