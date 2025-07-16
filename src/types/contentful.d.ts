@@ -64,6 +64,28 @@ export interface IArtists extends Entry<IArtistsFields> {
   };
 }
 
+export interface IBottomFields {
+  /** Multicultural Poetry Night */
+  multiculturalPoetryNight: Document;
+}
+
+export interface IBottom extends Entry<IBottomFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'bottom';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IContactsFields {
   /** Image */
   image: Asset;
@@ -209,9 +231,47 @@ export interface ILogo extends Entry<ILogoFields> {
   };
 }
 
-export type CONTENT_TYPE = 'aboutUs' | 'artists' | 'contacts' | 'gallery' | 'home' | 'logo';
+export interface ISeoFields {
+  /** title */
+  title: string;
 
-export type IEntry = IAboutUs | IArtists | IContacts | IGallery | IHome | ILogo;
+  /** description */
+  description: string;
+
+  /** image */
+  image: Asset;
+}
+
+/** Seo optimization */
+
+export interface ISeo extends Entry<ISeoFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'seo';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE =
+  | 'aboutUs'
+  | 'artists'
+  | 'bottom'
+  | 'contacts'
+  | 'gallery'
+  | 'home'
+  | 'logo'
+  | 'seo';
+
+export type IEntry = IAboutUs | IArtists | IBottom | IContacts | IGallery | IHome | ILogo | ISeo;
 
 export type LOCALE_CODE = 'en-US';
 

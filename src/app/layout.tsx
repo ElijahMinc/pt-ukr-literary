@@ -4,8 +4,9 @@ import { Header } from '@/widgets/header/header.ui';
 
 import client from '@/services/contentful';
 import { EntrySkeletonType } from 'contentful';
-import { ILogoFields } from '@/types/contentful';
+import { ILogoFields, ISeoFields } from '@/types/contentful';
 import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
+import { IBaseSeoProps } from '@/components/base-seo/base-seo.ui';
 
 import 'react-phone-input-2/lib/style.css';
 import './globals.scss';
@@ -18,10 +19,43 @@ const interSans = Inter({
   subsets: ['latin'],
 });
 
-export const metadata: Metadata = {
-  title: 'Multicultural Poetry Night',
-  description: 'Let poets guide you into their worlds — one verse at a time.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seoContent = await client.getEntries<EntrySkeletonType<ISeoFields>>({
+    content_type: 'seo',
+    limit: 1,
+  });
+
+  const seoData = seoContent.items[0]?.fields;
+  const seoTitle = seoData?.title;
+  const seoDescription = seoData?.description;
+  const seoPreviewImage = getContentfulImageData(seoData.image, { image: true });
+
+  const seoConfiguration: IBaseSeoProps & {
+    previewImage: string;
+  } = {
+    title: seoTitle,
+    description: seoDescription,
+    previewImage: seoPreviewImage || '',
+    isIndexablePage: true,
+    locale: 'en',
+  };
+
+  return {
+    title: seoConfiguration?.title || 'Default Title',
+    description: 'Let poets guide you into their worlds — one verse at a time.',
+    openGraph: {
+      title: seoConfiguration?.title || 'Default Title',
+      description: 'Let poets guide you into their worlds — one verse at a time.',
+      images: seoConfiguration.previewImage ? [`https:${seoConfiguration.previewImage}`] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seoConfiguration?.title || 'Default Title',
+      description: 'Let poets guide you into their worlds — one verse at a time.',
+      images: seoConfiguration.previewImage ? [`https:${seoConfiguration.previewImage}`] : [],
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
