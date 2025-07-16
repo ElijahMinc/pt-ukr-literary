@@ -3,16 +3,14 @@
 import { Input } from '@/ui/input/input.ui';
 import { Button } from '@/ui/button/button.ui';
 import { Controller, useForm } from 'react-hook-form';
-
 import { PhoneInput } from '@/ui/phone-input/phone-input.ui';
 import { useEffect, useState } from 'react';
 import { CountryCode, parsePhoneNumber } from 'libphonenumber-js/min';
-
-import './join-us.scss';
 import { Spinner } from '@/ui/spinner/spinner.ui';
 import ReactConfetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
 
+import './join-us.scss';
 interface ISheetForm {
   name: string;
   surname: string;
@@ -112,6 +110,7 @@ export const JoinUsWidget = () => {
                 {...restField}
                 country='pt'
                 placeholder='Your phone'
+                isError={!!errors.phone}
                 onChange={(value, country) => {
                   onChange(value);
                   if (country?.countryCode) {
