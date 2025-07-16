@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev --turbopack",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -45,6 +45,6 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": "18.18.0"
+    "node": "16.x"
   }
 }
