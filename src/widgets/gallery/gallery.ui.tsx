@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { GalleryCard } from '@/components/gallery-card/gallery-card.ui';
 import './gallery.scss';
@@ -6,6 +5,8 @@ import client from '@/services/contentful';
 import { EntrySkeletonType } from 'contentful';
 import { IGalleryFields } from '@/types/contentful';
 import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
+
+export const revalidate = 3600;
 
 export const GalleryWidget = async () => {
   const gallerySectionData = await client.getEntries<EntrySkeletonType<IGalleryFields>>({
