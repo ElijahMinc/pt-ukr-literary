@@ -49,10 +49,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: seoConfiguration.previewImage
         ? [
             {
-              url: `https:${seoConfiguration.previewImage}?w=1200&h=630&fit=fill`,
-              secureUrl: `https:${seoConfiguration.previewImage}?w=1200&h=630&fit=fill`,
-              width: 1200,
-              height: 630,
+              url: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              secureUrl: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              width: 256,
+              height: 256,
               alt: 'preview Image',
               type: 'image/jpg',
             },
