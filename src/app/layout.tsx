@@ -49,8 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
       images: seoConfiguration.previewImage
         ? [
             {
-              url: `https:${seoConfiguration.previewImage}`,
-              secureUrl: `https:${seoConfiguration.previewImage}`,
+              url: `https:${seoConfiguration.previewImage}?w=1200&h=630&fit=fill`,
+              secureUrl: `https:${seoConfiguration.previewImage}?w=1200&h=630&fit=fill`,
               width: 1200,
               height: 630,
               alt: 'preview Image',
@@ -63,20 +63,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: seoConfiguration?.title || 'Default Title',
-      description: 'Let poets guide you into their worlds — one verse at a time.',
-      images: seoConfiguration.previewImage
-        ? [
-            {
-              url: `https:${seoConfiguration.previewImage}`,
-              secureUrl: `https:${seoConfiguration.previewImage}`,
-              width: 256,
-              height: 256,
-              alt: 'bot-256',
-              type: 'image/jpg',
-            },
-          ]
-        : [],
+      title: seoTitle,
+      description: seoDescription,
+      images: seoPreviewImage ? [`https:${seoPreviewImage}`] : [],
     },
   };
 }
