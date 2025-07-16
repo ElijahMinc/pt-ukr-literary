@@ -65,7 +65,18 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: seoTitle,
       description: seoDescription,
-      images: seoPreviewImage ? [`https:${seoPreviewImage}`] : [],
+      images: seoConfiguration.previewImage
+        ? [
+            {
+              url: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              secureUrl: `https:${seoConfiguration.previewImage}?w=256&h=256&fit=fill`,
+              width: 256,
+              height: 256,
+              alt: 'preview Image',
+              type: 'image/jpg',
+            },
+          ]
+        : [],
     },
   };
 }
