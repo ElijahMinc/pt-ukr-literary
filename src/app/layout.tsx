@@ -46,13 +46,37 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: seoConfiguration?.title || 'Default Title',
       description: 'Let poets guide you into their worlds — one verse at a time.',
-      images: seoConfiguration.previewImage ? [`https:${seoConfiguration.previewImage}`] : [],
+      images: seoConfiguration.previewImage
+        ? [
+            {
+              url: `https:${seoConfiguration.previewImage}`,
+              secureUrl: `https:${seoConfiguration.previewImage}`,
+              width: 256,
+              height: 256,
+              alt: 'bot-256',
+              type: 'image/jpng',
+            },
+          ]
+        : [],
+      locale: 'en',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
       title: seoConfiguration?.title || 'Default Title',
       description: 'Let poets guide you into their worlds — one verse at a time.',
-      images: seoConfiguration.previewImage ? [`https:${seoConfiguration.previewImage}`] : [],
+      images: seoConfiguration.previewImage
+        ? [
+            {
+              url: `https:${seoConfiguration.previewImage}`,
+              secureUrl: `https:${seoConfiguration.previewImage}`,
+              width: 256,
+              height: 256,
+              alt: 'bot-256',
+              type: 'image/jpng',
+            },
+          ]
+        : [],
     },
   };
 }
