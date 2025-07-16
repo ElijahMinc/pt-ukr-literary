@@ -13,8 +13,8 @@ export const FooterWidget = async () => {
     { url: '#about', label: 'About' },
     { url: '#Join us', label: 'Join us' },
     { url: '#artists', label: 'Artists' },
-    { url: '#gallery', label: 'Gallery' },
     { url: '#contacts', label: 'Contacts' },
+    { url: '#gallery', label: 'Gallery' },
   ];
 
   const contactsSectionData = await client.getEntries<EntrySkeletonType<IContactsFields>>({
