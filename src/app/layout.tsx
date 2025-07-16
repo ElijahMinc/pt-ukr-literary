@@ -51,9 +51,9 @@ export async function generateMetadata(): Promise<Metadata> {
             {
               url: `https:${seoConfiguration.previewImage}`,
               secureUrl: `https:${seoConfiguration.previewImage}`,
-              width: 256,
-              height: 256,
-              alt: 'bot-256',
+              width: 1200,
+              height: 630,
+              alt: 'preview Image',
               type: 'image/jpg',
             },
           ]
