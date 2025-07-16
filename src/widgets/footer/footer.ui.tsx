@@ -11,10 +11,10 @@ export const FooterWidget = async () => {
   const links = [
     { url: '#home', label: 'Home' },
     { url: '#about', label: 'About' },
-    { url: '#Join us', label: 'Join us' },
     { url: '#artists', label: 'Artists' },
-    { url: '#contacts', label: 'Contacts' },
     { url: '#gallery', label: 'Gallery' },
+    { url: '#contacts', label: 'Contacts' },
+    { url: '#join-us', label: 'Join us' },
   ];
 
   const contactsSectionData = await client.getEntries<EntrySkeletonType<IContactsFields>>({

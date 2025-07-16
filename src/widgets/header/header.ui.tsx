@@ -20,10 +20,10 @@ export const Header = ({ logoImage, logoDescription }: IHeaderProps) => {
   const links = [
     { url: '/#home', label: 'Home' },
     { url: '/#about', label: 'About' },
-    { url: '/#join-us', label: 'Join us' },
     { url: '/#artists', label: 'Artists' },
-    { url: '/#contacts', label: 'Contacts' },
     { url: '/#gallery', label: 'Gallery' },
+    { url: '/#contacts', label: 'Contacts' },
+    { url: '/#join-us', label: 'Join us' },
   ];
 
   return (

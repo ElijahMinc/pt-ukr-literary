@@ -4,6 +4,7 @@ import { ContactsWidget } from '@/widgets/contacts/contacts.ui';
 import { FooterWidget } from '@/widgets/footer/footer.ui';
 import { GalleryWidget } from '@/widgets/gallery/gallery.ui';
 import { HomeWidget } from '@/widgets/home/home.ui';
+import { JoinUsWidget } from '@/widgets/join-us/join-us.ui';
 
 export const revalidate = 5;
 
@@ -12,9 +13,10 @@ const MainPage = () => {
     <main>
       <HomeWidget />
       <AboutWidget />
-      <ContactsWidget />
       <ArtistsWidget />
       <GalleryWidget />
+      <ContactsWidget />
+      <JoinUsWidget />
       <FooterWidget />
     </main>
   );

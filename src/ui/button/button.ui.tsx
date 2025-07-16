@@ -30,7 +30,7 @@ export const Button = ({
       {...restProps}
     >
       {children}
-      {!!icon && <span className='icon'>{icon}</span>}
+      {!!icon && <div className='icon'>{icon}</div>}
     </button>
   );
 };

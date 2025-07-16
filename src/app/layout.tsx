@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import { Archivo, Inter } from 'next/font/google';
 import { Header } from '@/widgets/header/header.ui';
 
-import './globals.scss';
 import client from '@/services/contentful';
 import { EntrySkeletonType } from 'contentful';
 import { ILogoFields } from '@/types/contentful';
 import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
+
+import 'react-phone-input-2/lib/style.css';
+import './globals.scss';
 
 const archivoSans = Archivo({
   subsets: ['latin'],

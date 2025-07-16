@@ -44,11 +44,13 @@
     &:disabled {
       border: 1px solid transparent;
       background-color: var(--thirdy-white-color);
+      color: var(--disabled-text-color, #a0a0a0); /* Цвет текста для дизейбл */
       pointer-events: none;
+      opacity: 0.9; /* Прозрачность для неактивной кнопки */
 
       .icon {
         svg {
-          fill: var(--thirdy-white-color);
+          fill: var(--thirdy-white-color); /* Цвет иконки при дизейбл */
         }
       }
     }
