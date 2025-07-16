@@ -6,7 +6,6 @@ import client from '@/services/contentful';
 import { EntrySkeletonType } from 'contentful';
 import { ILogoFields, ISeoFields } from '@/types/contentful';
 import { getContentfulImageData } from '@/services/contentful/helpers/getImageData';
-import { IBaseSeoProps } from '@/components/base-seo/base-seo.ui';
 
 import 'react-phone-input-2/lib/style.css';
 import './globals.scss';
@@ -30,8 +29,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const seoDescription = seoData?.description;
   const seoPreviewImage = getContentfulImageData(seoData.image, { image: true });
 
-  const seoConfiguration: IBaseSeoProps & {
+  const seoConfiguration: {
+    title: string;
+    description: string;
     previewImage: string;
+    isIndexablePage: boolean;
+    locale: 'en';
   } = {
     title: seoTitle,
     description: seoDescription,
@@ -60,11 +63,13 @@ export async function generateMetadata(): Promise<Metadata> {
         : [],
       locale: 'en',
       type: 'website',
+      siteName: seoConfiguration?.title,
     },
     twitter: {
       card: 'summary_large_image',
       title: seoTitle,
       description: seoDescription,
+      site: seoConfiguration?.title,
       images: seoConfiguration.previewImage
         ? [
             {
