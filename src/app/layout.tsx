@@ -9,6 +9,7 @@ import { getContentfulImageData } from '@/services/contentful/helpers/getImageDa
 
 import 'react-phone-input-2/lib/style.css';
 import './globals.scss';
+import Script from 'next/script';
 
 const archivoSans = Archivo({
   subsets: ['latin'],
@@ -108,6 +109,22 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
+      <head>
+        <Script
+          src='https://www.googletagmanager.com/gtag/js?id=G-X23HBNZCZF'
+          strategy='afterInteractive'
+        />
+
+        {/* Инициализация dataLayer */}
+        <Script id='ga-init' strategy='afterInteractive'>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X23HBNZCZF');
+          `}
+        </Script>
+      </head>
       <body className={`${archivoSans.className} ${interSans.className}`}>
         <Header logoImage={imageUrl || ''} logoDescription={title} />
         <div className='container'>{children}</div>
