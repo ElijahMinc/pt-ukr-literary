@@ -9,6 +9,7 @@ import { getContentfulImageData } from '@/services/contentful/helpers/getImageDa
 
 import 'react-phone-input-2/lib/style.css';
 import './globals.scss';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const archivoSans = Archivo({
   subsets: ['latin'],
@@ -111,6 +112,7 @@ export default async function RootLayout({
       <body className={`${archivoSans.className} ${interSans.className}`}>
         <Header logoImage={imageUrl || ''} logoDescription={title} />
         <div className='container'>{children}</div>
+        <GoogleAnalytics gaId='G-X23HBNZCZF' />
       </body>
     </html>
   );
